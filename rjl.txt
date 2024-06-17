@@ -1,0 +1,70 @@
+#include<iostream>
+#include<algorithm>
+#include<string>
+#include<cctype>
+#include<limits>
+
+usingnamespacestd;
+
+stringsortString(conststring&str) {
+stringsorted_str = str;
+sort(sorted_str.begin(), sorted_str.end());
+returnsorted_str;
+}
+
+boolisValidString(conststring&str) {
+if (str.length() < 1  str.length() > 10) {
+cout<<"Error: thestringmustcontainbetween 1 and 10 characters."<<endl;
+cout<<endl;
+returnfalse;
+    }
+for (char c : str) {
+if (!islower(c)) {
+cout<<"Error: thestringshouldcontainonlysmallLatinletters."<<endl;
+cout<<endl;
+returnfalse;
+        }
+    }
+returntrue;
+}
+
+intmain() {
+string s;
+charchoice;
+charstartGameChoice;
+
+cout<<"WelcometotheGameAlphabet"<<endl;
+cout<<"Wouldyouliketostartthegame? (y/n): ";
+cin>>startGameChoice;
+cin.clear();
+cin.ignore(numeric_limits<streamsize>::max(), '\n');
+cout<<endl;
+
+if (startGameChoice != 'y'&&startGameChoice != 'Y') {
+cout<<"Goodbye!"<<endl;
+return 0;
+    }
+
+do {
+do {
+cout<<"Enterthestring: ";
+getline(cin, s);
+        } while (!isValidString(s));
+
+stringsorted_s = sortString(s);
+cout<<"Sortedstring: "<<sorted_s<<endl;
+cout<<endl;
+
+cout<<"Wouldyouliketoenteranotherword? (y/n): ";
+cin>>choice;
+cout<<endl;
+
+cin.clear();
+cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    } while (choice == 'y'  choice == 'Y');
+
+cout<<"Thanksforplaying! Goodbye!"<<endl;
+
+return 0;
+}
